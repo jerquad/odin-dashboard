@@ -1,24 +1,42 @@
-body { 
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 
 :root {
     --front: rgb(191, 219, 255);
     --middle: rgb(240, 205, 140);
     --middle-shadow: grey;
     --back: white;
+    --button: rgb(140, 186, 247);
+    --nav-font: black;
+    --highlight: rgb(255, 68, 99);
+    --link-highlight: transparent;
+    --mid-font-head: black;
+    --mid-font-text: rgb(97, 97, 97);
+    --toggle: rgb(97, 97, 97);
+}
+
+body { 
+    font-family: 'Roboto', sans-serif, system-ui;
+    font-size: 18px;
+    font-weight: 300;
+    background-color: var(--back);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6, svg, p {
     margin: 0;
 }
 
+a {
+    font-weight: 400;
+    text-decoration: none;
+}
+
 #container {
     display: grid;
-    grid-template-columns: min-content 4fr;
-    grid-template-rows: min-content 5fr;
+    grid-template-columns: min-content 1fr;
+    grid-template-rows: min-content 1fr;
     height: 100%;
 }
 
@@ -39,11 +57,16 @@ h1, h2, h3, h4, h5, h6, svg, p {
 
 #search {
     display: flex;
+    align-items: center;
 }
 
 #search>input {
     display: flex;
     flex-grow: 1;
+    background-color: var(--back);
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
 }
 
 #header ul {
@@ -56,6 +79,32 @@ h1, h2, h3, h4, h5, h6, svg, p {
     white-space: nowrap;
 }
 
+#header ul li svg{
+    height: 24px;
+    width: 24px;
+}
+
+#user-mini {
+    background-color: white;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+#header ul li button {
+    background-color: var(--front);
+    padding: 8px 25px;
+    font-family: inherit;
+    color: var(--back);
+    font-size: 1rem;
+    font-weight: 400;
+    border-radius: 20px;
+    border: 1px solid var(--button);
+}
+
+#header ul li button:hover {
+    background-color: var(--button);
+}
+
 #user-info {
     display: grid;
     align-items: center;
@@ -63,28 +112,93 @@ h1, h2, h3, h4, h5, h6, svg, p {
     white-space: nowrap;
 }
 
-/* #user-info>* {
-    border: 2px solid blue;
-} */
-
 #user-info :first-child {
     grid-row: 1 / 3;
+    background-color: white;
+    padding: 10px;
+    border-radius: 32px;
+    margin-right: 5px;
 }
 
 #navigation {
     background-color: var(--front);
     grid-row: 1 / 3;
+    padding: 20px 0px;
+}
+
+.nav-menu a,
+.nav-menu svg {
+    color: var(--nav-font);
+    margin-bottom: 5px;
+}
+
+.nav-menu svg {
+    padding-left: 15px;
+    border-radius: 20px 0 0 20px;
+    height: 33px;
+    width: 33px;
+}
+
+.nav-menu a {
+    font-size: 1.5rem;
+    padding:  2.5px 20px;
+    position: relative;
+    background-color: transparent;
+    border-left-color: transparent;
+}
+
+.nav-menu a::after {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    border: 17px solid transparent;
+    border-left-color: inherit;
+    content: "";
+    width: 0;
+    height: 0;
 }
 
 #logo {
-    margin: 1rem;
+    /* margin: 1rem; */
     display: flex;
     align-items: center;
-    gap: 1rem;
+    justify-content: center;
+    margin: 0 1rem;
+}
+
+#logo svg {
+    width: 100px;
+    height: 100px;
+    padding:15px;
+    background-color: var(--back);
+    border-radius: 115px;
+}
+
+#logo h1 {
+    background-color: var(--back);
+    position: relative;
+    padding: 10px 20px 10px 0;
+    border-radius: 0 30px 30px 0;
+}
+
+#logo h1::before {
+    position: absolute;
+    top: 0;
+    left: -9px;
+    background-color: var(--back);
+    content: "";
+    width: 9px;
+    height: 100%;
+}
+
+#logo svg,
+#logo h1::before,
+#logo h1 {
+    box-shadow: 0px 5px black;
 }
 
 #navigation>.nav-menu {
-    margin: 5rem 4rem;
+    margin: 5rem 17px;
     display: grid;
     grid-template-columns: min-content 1fr;
     align-items: center;
@@ -96,20 +210,46 @@ h1, h2, h3, h4, h5, h6, svg, p {
 
 #main {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 5fr minmax(300px, 1.5fr);
     grid-template-rows: min-content;
     padding: 15px;
     gap: 25px;
+    padding: 30px 0 0 30px;
+}
+
+#main a h3:hover,
+#main a h4:hover,
+#main a h5:hover {
+    text-decoration: underline;
+}
+
+#sidebar a h4,
+#sidebar a h5,
+.card a {
+    color: var(--mid-font-head);
+}
+
+#sidebar a p,
+.card p {
+    color: var(--mid-font-text);
+}
+
+#sidebar a p {
+    font-size: .9rem;
 }
 
 #content {
-    /* padding: 25px 0; */
     grid-row: 2 / 3;
     grid-column: 1 / 2;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-content: start;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
     gap: 25px;
 }
+
+/* #sidebar h3 { 
+    margin-bottom: 25px;
+} */
 
 .card {
     display: flex;
@@ -118,7 +258,9 @@ h1, h2, h3, h4, h5, h6, svg, p {
     background-color: var(--middle);
     border-radius: 10px;
     height: 250px;
-    padding: 1rem;
+    padding: 2rem 1rem;
+    border-left: 10px solid var(--highlight);
+    box-shadow: 1px 1px 5px var(--middle-shadow);
 }
 
 .card-icons {
@@ -126,16 +268,33 @@ h1, h2, h3, h4, h5, h6, svg, p {
     justify-content: flex-end;
 }
 
+.card-icons svg {
+    height: 24px;
+    width: 24px;
+}
+
+.toggle {
+    color: var(--toggle);
+}
+
 #sidebar {
     grid-column: 2 / 3;
     grid-row: 2/ 3;
 }
 
+#announcements {
+    margin-bottom: 50px;
+}
+
+#announcements, 
+#trending {
+    margin-right: 2rem;
+}
+
 #sidebar ul {
     list-style-type: none;
-    padding: 0 1rem;
+    padding: 1rem;
     margin: 0;
-    /* margin: 25px 0; */
     background-color: var(--middle);
     border-radius: 10px;
 }
@@ -145,9 +304,15 @@ h1, h2, h3, h4, h5, h6, svg, p {
     border-bottom: 2px solid var(--back);
 }
 
+#sidebar ul :last-child {
+    border-bottom-color: var(--middle);
+}
+
 #trending {
     background-color: var(--middle);
     border-radius: 10px;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 #trending div {
@@ -155,24 +320,24 @@ h1, h2, h3, h4, h5, h6, svg, p {
     display: grid;
     align-items: center;
     grid-template-columns: min-content 1fr;
-    grid-template-rows: min-content;
+    grid-template-rows: 1fr;
     gap:0;
 }
 
-#trending div :first-child {
+#trending svg {
     grid-row: 1 / 3;
+    width: 35x;
+    height: 35px;
     margin-right: 5px;
     background-color: white;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 30px;
 }
 
 #trending div :nth-child(2) {
     align-items: end;
-    /* border: 1px solid blue; */
 }
 
 #trending div :last-child {
     align-items: start;
-    /* border: 1px solid red; */
 }
