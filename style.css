@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 
-:root {
+/* :root {
     --front: rgb(191, 219, 255);
     --middle: rgb(240, 205, 140);
     --middle-shadow: grey;
@@ -12,7 +12,33 @@
     --mid-font-head: black;
     --mid-font-text: rgb(97, 97, 97);
     --toggle: rgb(97, 97, 97);
+} */
+
+:root {
+    --hue: 35;
+    --sat: 90%;
+    --light: 60%;
+    --rot: 180;
+    
+    
+
+    --front: hsl(calc(var(--hue) + var(--rot)), 60%, 80%);
+    --middle: hsl(var(--hue), var(--sat), var(--light));
+    --back: hsl(var(--hue), 0%, 100%);
+    
+    --middle-shadow: hsl(var(--hue), 0%, 70%);
+    --button: hsl(calc(var(--hue) + var(--rot)), 60%, 70%);
+    --nav-font: black;
+    --highlight: hsl(calc(var(--hue) + 45), 100%, var(--light));
+    --link-highlight: transparent;
+    --mid-font-head: black;
+    --mid-font-text: rgb(97, 97, 97);
+    --toggle: rgb(97, 97, 97);
 }
+
+/* .card {
+    --middle: hsl(calc(var(--hue) + var(--rot)), var(--sat), calc(var(--light) + 50%))
+} */
 
 body { 
     font-family: 'Roboto', sans-serif, system-ui;
